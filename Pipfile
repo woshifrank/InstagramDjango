@@ -8,6 +8,8 @@ pylint = "*"
 
 [packages]
 django = "==2.2.3"
+django-imagekit = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.8"
