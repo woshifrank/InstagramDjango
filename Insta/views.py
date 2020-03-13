@@ -1,6 +1,7 @@
 #from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse, reverse_lazy
 from Insta.models import Post
 #class-based view
 class HelloWorld(TemplateView):
@@ -19,3 +20,14 @@ class PostCreateView(CreateView):
     model = Post
     template_name = 'post_create.html'
     fields = '__all__'
+
+class PostUpdateView(UpdateView):
+    model = Post
+    template_name = 'post_update.html'
+    fields = ["title"]
+
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = 'post_delete.html'
+    # prevent early jump before deletion complete
+    success_url = reverse_lazy("posts")
