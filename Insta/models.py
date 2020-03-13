@@ -1,5 +1,6 @@
 from django.db import models
 from imagekit.models import ProcessedImageField
+from django.urls import reverse
 
 # Create your models here.
 class Post(models.Model):
@@ -11,3 +12,7 @@ class Post(models.Model):
         blank = True,
         null = True
     )
+    # after each Post creation, call this function and jump to the post detail page
+    def get_absolute_url(self):
+        # reverse url
+        return reverse("post_detail",args=[str(self.id)])
