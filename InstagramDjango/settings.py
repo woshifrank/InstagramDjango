@@ -122,3 +122,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # tell django to find static files in the subsequent directory
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+LOGIN_REDIRECT_URL = 'posts'
