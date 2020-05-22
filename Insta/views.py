@@ -3,6 +3,9 @@ from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse, reverse_lazy
 from Insta.models import Post
+# for signup feature
+from django.contrib.auth.forms import UserCreationForm
+
 #class-based view
 class HelloWorld(TemplateView):
     template_name = 'test.html'
@@ -39,3 +42,8 @@ class PostDeleteView(DeleteView):
     template_name = 'post_delete.html'
     # prevent early jump before deletion complete
     success_url = reverse_lazy("posts")
+
+class SignUp(CreateView):
+    form_class = UserCreationForm
+    template_name = 'signup.html'
+    success_url = reverse_lazy("login")
